@@ -44,7 +44,7 @@ class ModuleAViewController: UIViewController {
         if !videoManager.isRunning{
             videoManager.start()
         }
-        self.bridge.processType = 1
+        self.bridge.processType = 0
         // Do any additional setup after loading the view.
         //
     }
@@ -57,11 +57,40 @@ class ModuleAViewController: UIViewController {
         // if no faces, just return original image
         if f.count == 0 { return inputImage }
         var retImage = inputImage
+        
+        
         //Highlights multiple faces in the scene using CoreImage filters
         for faces in f {
             self.bridge.setImage(retImage, withBounds: faces.bounds, andContext: self.videoManager.getCIContext())
-            
+            //High light faces
             self.bridge.processImage()
+            
+            
+            
+            //-------------display if the user is smiling or blinking (and with which eye)------------
+            if(faces.hasSmile){
+                self.bridge.addText("Smile", atY: 10)
+            }else{
+                self.bridge.addText("Not Smile", atY: 10)
+            }
+            
+            if(faces.leftEyeClosed){
+                self.bridge.addText("leftEyeClosed", atY: 20)
+            }else{
+                self.bridge.addText("leftEyeOpen", atY: 20)
+            }
+            
+            if(faces.rightEyeClosed){
+                self.bridge.addText("rightEyeClosed", atY: 30)
+            }else{
+                self.bridge.addText("rightEyeOpen", atY: 30)
+            }
+            
+            if (faces.leftEyeClosed && faces.rightEyeClosed){
+                self.bridge.addText("BothClosed", atY: 40)
+            }
+            //-------------display if the user is smiling or blinking (and with which eye)------------
+            
             retImage = self.bridge.getImageComposite()
 
             //---------------detect eyes and mouth-----------

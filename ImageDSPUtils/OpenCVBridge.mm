@@ -28,6 +28,15 @@ using namespace cv;
 // alternatively you can subclass this class and override the process image function
 
 
+- (void)addText:(NSString *)infoText atY:(int)y{
+    char text[50];
+    Scalar avgPixelIntensity;
+    const char * cstr2 = [ infoText UTF8String ] ;
+    sprintf(text,"%s", cstr2);
+    cv::putText(_image, text, cv::Point(0, y), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+  
+}
+
 #pragma mark Define Custom Functions Here
 -(void)processImage{
     
@@ -39,6 +48,11 @@ using namespace cv;
     
     
     switch (self.processType) {
+        case 0:
+        {
+
+            break;
+        }
         case 1:
         {
             cvtColor( _image, frame_gray, CV_BGR2GRAY );

@@ -36,4 +36,6 @@
 
 -(void)loadHaarCascadeWithFilename:(NSString*)filename;
 
+-(void)addText:(NSString *)infoText atY:(int)y;
+
 @end
