@@ -14,8 +14,7 @@ class ModuleAViewController: UIViewController {
     var filters : [CIFilter]! = nil
     var videoManager:VideoAnalgesic! = nil
     var detector:CIDetector! = nil
-    
-    @IBOutlet weak var smileLabel: UILabel!
+
     let pinchFilterIndex = 2
     let bridge = OpenCVBridge()
     var eyeMouthFilter=0
@@ -142,7 +141,7 @@ class ModuleAViewController: UIViewController {
     
     func getFaces(img:CIImage) -> [CIFaceFeature]{
         // this ungodly mess makes sure the image is the correct orientation
-        let optsFace = [CIDetectorImageOrientation:self.videoManager.ciOrientation]
+        let optsFace = [CIDetectorImageOrientation:self.videoManager.ciOrientation,CIDetectorSmile:true, CIDetectorEyeBlink:true] as [String : Any]
         // get Face Features
         return self.detector.features(in: img, options: optsFace) as! [CIFaceFeature]
         
