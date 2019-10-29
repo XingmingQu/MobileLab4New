@@ -48,6 +48,16 @@ class ModuleAViewController: UIViewController {
         //
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.front)
+        self.bridge.setTransforms(self.videoManager.transform)
+        self.videoManager.setProcessingBlock(newProcessBlock: self.processImage)
+        if !videoManager.isRunning{
+            videoManager.start()
+        }
+    }
+    
+    
     //MARK: Process image output
     func processImage(inputImage:CIImage) -> CIImage{
         
@@ -63,8 +73,6 @@ class ModuleAViewController: UIViewController {
             self.bridge.setImage(retImage, withBounds: faces.bounds, andContext: self.videoManager.getCIContext())
             //High light faces
             self.bridge.processImage()
-            
-            
             
             //-------------display if the user is smiling or blinking (and with which eye)------------
             if(faces.hasSmile){

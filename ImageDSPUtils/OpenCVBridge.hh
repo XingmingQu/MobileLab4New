@@ -30,6 +30,9 @@
 
 // call this to perfrom processing (user controlled for better transparency)
 -(void)processImage;
+// call this to processing heart rate
+-(void)processHeartRate;
+
 
 // for the video manager transformations
 -(void)setTransforms:(CGAffineTransform)trans;
@@ -37,5 +40,6 @@
 -(void)loadHaarCascadeWithFilename:(NSString*)filename;
 
 -(void)addText:(NSString *)infoText atY:(int)y;
+
 
 @end

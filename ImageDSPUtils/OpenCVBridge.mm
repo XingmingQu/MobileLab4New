@@ -22,19 +22,87 @@ using namespace cv;
 
 @implementation OpenCVBridge
 
+float redArr[90];
+float blueArr[90];
+float greenArr[90];
+int count = 0;
+CFAbsoluteTime startTime;
+CFAbsoluteTime endTime;
+CFAbsoluteTime diff;
+//float finishedTime=0;
+int countForStart=0;
 
+//float firstTouch[2];
+int countForEnd=0;
 
 #pragma mark ===Write Your Code Here===
 // alternatively you can subclass this class and override the process image function
 
 
+
+- (void)processHeartRate{
+    cv::Mat frame_gray,image_copy;
+
+//    bool flag = false;
+    
+    
+    //when we blocked the camera, it seems like the G and R decreased mostly. The green is the most sensitive one. So we can threshold maybe one of it.
+    
+    char text[50];
+    Scalar avgPixelIntensity;
+    
+    cvtColor(_image, image_copy, CV_BGRA2BGR); // get rid of alpha for processing
+    avgPixelIntensity = cv::mean( image_copy );
+    
+    
+    sprintf(text,"Avg. B: %.0f, G: %.0f, R: %.0f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
+    cv::putText(_image, text, cv::Point(100, 300), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+    
+    // detect a finger
+    if (avgPixelIntensity.val[0]>190){
+        if(countForStart<1){
+            startTime =  CFAbsoluteTimeGetCurrent();
+            countForStart+=1;
+        }
+        
+//        flag=true;
+        if (count<90){
+            blueArr[count]=avgPixelIntensity.val[0];
+            greenArr[count]=avgPixelIntensity.val[1];
+            redArr[count]=avgPixelIntensity.val[2];
+            count+=1;
+        }else
+        {
+            sprintf(text,"Array is Full!!!");
+            cv::putText(_image, text, cv::Point(100, 100), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+            
+            
+            if(countForEnd<1){
+                endTime = CFAbsoluteTimeGetCurrent();
+                diff = endTime-startTime;
+                countForEnd+=1;
+            }
+            sprintf(text,"We used %.3f s to fill the arrays", diff);
+            cv::putText(_image, text, cv::Point(50, 50), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+        }
+        
+        sprintf(text,"Blocked by the finger!!!");
+        cv::putText(_image, text, cv::Point(100, 200), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+        
+    }
+    
+//    return flag;
+}
+
+
+// addText function, which is used for modualA. It put some text next in the face
 - (void)addText:(NSString *)infoText atY:(int)y{
     char text[50];
     Scalar avgPixelIntensity;
     const char * cstr2 = [ infoText UTF8String ] ;
     sprintf(text,"%s", cstr2);
     cv::putText(_image, text, cv::Point(0, y), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
-  
+    
 }
 
 #pragma mark Define Custom Functions Here
@@ -50,7 +118,7 @@ using namespace cv;
     switch (self.processType) {
         case 0:
         {
-
+            
             break;
         }
         case 1:
