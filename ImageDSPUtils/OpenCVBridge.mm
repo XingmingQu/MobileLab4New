@@ -56,7 +56,7 @@ int countForEnd=0;
     
     
     sprintf(text,"Avg. B: %.0f, G: %.0f, R: %.0f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
-    cv::putText(_image, text, cv::Point(100, 300), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+    cv::putText(_image, text, cv::Point(100, 350), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
     
     // detect a finger
     if (avgPixelIntensity.val[0]>190){
@@ -86,9 +86,13 @@ int countForEnd=0;
             cv::putText(_image, text, cv::Point(50, 50), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
         }
         
-        sprintf(text,"Blocked by the finger!!!");
-        cv::putText(_image, text, cv::Point(100, 200), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+        sprintf(text,"Finger detected! Please hold your position!");
+        cv::putText(_image, text, cv::Point(71, 200), FONT_HERSHEY_PLAIN, 0.60, Scalar::all(255), 1, 2);
         
+    }
+    else{
+        sprintf(text,"Please put your finger on the camera");
+        cv::putText(_image, text, cv::Point(71, 300), FONT_HERSHEY_PLAIN, 0.65, Scalar::all(255), 1, 2);
     }
     
 //    return flag;
