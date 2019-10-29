@@ -21,14 +21,16 @@ class ModuleBViewController: UIViewController {
         self.videoManager = VideoAnalgesic.sharedInstance
         self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.back)
         
-        self.videoManager.turnOnFlashwithLevel(1.0)
+        
         self.bridge.setTransforms(self.videoManager.transform)
         self.videoManager.setProcessingBlock(newProcessBlock: self.processImage)
+        
+        
         
         if !videoManager.isRunning{
             videoManager.start()
         }
-
+        //self.videoManager.turnOnFlashwithLevel(1.0)
         // Do any additional setup after loading the view.
         
     }
@@ -37,15 +39,22 @@ class ModuleBViewController: UIViewController {
 
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.back)
         self.bridge.setTransforms(self.videoManager.transform)
         self.videoManager.setProcessingBlock(newProcessBlock: self.processImage)
         if !videoManager.isRunning{
             videoManager.start()
         }
-        self.videoManager.turnOnFlashwithLevel(1.0)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+            self.videoManager.turnOnFlashwithLevel(1.0)
+            //self.videoManager.toggleFlash()
+        }
+        
     }
+    //charts
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         self.videoManager.turnOffFlash()
 //        videoManager.stop()
     }
@@ -53,7 +62,7 @@ class ModuleBViewController: UIViewController {
     
     func processImage(inputImage:CIImage) -> CIImage{
         
-        self.videoManager.turnOnFlashwithLevel(1.0)
+//        self.videoManager.turnOnFlashwithLevel(1.0)
         var retImage = inputImage
         
         // use this code if you are using OpenCV and want to overwrite the displayed image via OpenCv
