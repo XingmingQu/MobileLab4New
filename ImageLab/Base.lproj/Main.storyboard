@@ -18,13 +18,55 @@
                     <view key="view" contentMode="scaleToFill" id="QoO-W3-22i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nk4-07-RPL" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="25" y="404" width="364" height="370"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heart Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-Iq-765">
+                                <rect key="frame" x="144" y="77" width="126" height="27"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="126" id="cXn-TI-R6p"/>
+                                    <constraint firstAttribute="height" constant="27" id="x4X-C1-HDx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7M-nU-zdv">
+                                <rect key="frame" x="154.5" y="133" width="105" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="0VD-mb-J4S"/>
+                                    <constraint firstAttribute="height" constant="21" id="EAv-a1-COC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="nk4-07-RPL" secondAttribute="trailing" constant="5" id="43i-qx-cSv"/>
+                            <constraint firstItem="y7M-nU-zdv" firstAttribute="centerX" secondItem="QoO-W3-22i" secondAttribute="centerX" id="4z8-NJ-t2F"/>
+                            <constraint firstItem="nys-rr-6lG" firstAttribute="top" secondItem="nk4-07-RPL" secondAttribute="bottom" constant="39" id="BiG-ei-5SH"/>
+                            <constraint firstItem="nk4-07-RPL" firstAttribute="centerX" secondItem="QoO-W3-22i" secondAttribute="centerX" id="Hdm-Az-A7t"/>
+                            <constraint firstItem="nk4-07-RPL" firstAttribute="top" secondItem="Dn4-zp-L0Q" secondAttribute="bottom" constant="360" id="Mj8-ai-n3h"/>
+                            <constraint firstItem="y7M-nU-zdv" firstAttribute="top" secondItem="YcI-Iq-765" secondAttribute="bottom" constant="29" id="eV0-Z7-RFA"/>
+                            <constraint firstItem="YcI-Iq-765" firstAttribute="top" secondItem="Dn4-zp-L0Q" secondAttribute="bottom" constant="33" id="fO6-Qt-bHw"/>
+                            <constraint firstItem="nk4-07-RPL" firstAttribute="leading" secondItem="QoO-W3-22i" secondAttribute="leadingMargin" constant="5" id="hdc-wp-zQd"/>
+                            <constraint firstItem="YcI-Iq-765" firstAttribute="centerX" secondItem="QoO-W3-22i" secondAttribute="centerX" id="uv3-K4-JKp"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ModuleB" id="ywE-kM-OWe"/>
+                    <connections>
+                        <outlet property="heartRateCharts" destination="nk4-07-RPL" id="dXL-Lv-4tq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7s-1L-GEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="419"/>
+            <point key="canvasLocation" x="1111.5942028985507" y="418.52678571428572"/>
         </scene>
         <!--ModuleA-->
         <scene sceneID="fxX-NW-n83">

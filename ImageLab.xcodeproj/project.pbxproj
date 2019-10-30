@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		45D83FA3236646AD0061C018 /* ModuleBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D83FA1236646AD0061C018 /* ModuleBViewController.swift */; };
 		45D83FA4236646AD0061C018 /* ModuleAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D83FA2236646AD0061C018 /* ModuleAViewController.swift */; };
+		4A63D5127398A1D43ADFE1BB /* Pods_ImageLab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1047FC8A0AD3A6308D7CC9AA /* Pods_ImageLab.framework */; };
+		4DA568E482ACC4BE923C5CF7 /* Pods_ImageLab_ImageLabUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE445C6E8B13CF5077C20DE /* Pods_ImageLab_ImageLabUITests.framework */; };
+		8444827F52446FA24D4FC629 /* Pods_ImageLabTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689DD9CA3E815DFC223D9FA0 /* Pods_ImageLabTests.framework */; };
 		B650B31B1D8340F0000114A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31A1D8340F0000114A1 /* AppDelegate.swift */; };
 		B650B31D1D8340F0000114A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B650B31C1D8340F0000114A1 /* ViewController.swift */; };
 		B650B3201D8340F0000114A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B650B31E1D8340F0000114A1 /* Main.storyboard */; };
@@ -40,8 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0051514D34EE83AB58CBC6E1 /* Pods-ImageLab-ImageLabUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLab-ImageLabUITests.debug.xcconfig"; path = "Target Support Files/Pods-ImageLab-ImageLabUITests/Pods-ImageLab-ImageLabUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1047FC8A0AD3A6308D7CC9AA /* Pods_ImageLab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageLab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		179601825A36874EA6858B4F /* Pods-ImageLabTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLabTests.release.xcconfig"; path = "Target Support Files/Pods-ImageLabTests/Pods-ImageLabTests.release.xcconfig"; sourceTree = "<group>"; };
+		1A6EC3AF4986C181F8C781DA /* Pods-ImageLabTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLabTests.debug.xcconfig"; path = "Target Support Files/Pods-ImageLabTests/Pods-ImageLabTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2FEA9177E0F86279567C3BA9 /* Pods-ImageLab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLab.release.xcconfig"; path = "Target Support Files/Pods-ImageLab/Pods-ImageLab.release.xcconfig"; sourceTree = "<group>"; };
 		45D83FA1236646AD0061C018 /* ModuleBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleBViewController.swift; sourceTree = "<group>"; };
 		45D83FA2236646AD0061C018 /* ModuleAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleAViewController.swift; sourceTree = "<group>"; };
+		689DD9CA3E815DFC223D9FA0 /* Pods_ImageLabTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageLabTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7108B53E2698EC37902CBE70 /* Pods-ImageLab-ImageLabUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLab-ImageLabUITests.release.xcconfig"; path = "Target Support Files/Pods-ImageLab-ImageLabUITests/Pods-ImageLab-ImageLabUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9B57B758583FDAA603900063 /* Pods-ImageLab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageLab.debug.xcconfig"; path = "Target Support Files/Pods-ImageLab/Pods-ImageLab.debug.xcconfig"; sourceTree = "<group>"; };
+		ACE445C6E8B13CF5077C20DE /* Pods_ImageLab_ImageLabUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageLab_ImageLabUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650B3171D8340F0000114A1 /* ImageLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650B31A1D8340F0000114A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B650B31C1D8340F0000114A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6EF2FD71F7A1C2900C33387 /* opencv2.framework in Frameworks */,
+				4A63D5127398A1D43ADFE1BB /* Pods_ImageLab.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8444827F52446FA24D4FC629 /* Pods_ImageLabTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA568E482ACC4BE923C5CF7 /* Pods_ImageLab_ImageLabUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +114,7 @@
 				B650B3391D8340F0000114A1 /* ImageLabUITests */,
 				B650B3181D8340F0000114A1 /* Products */,
 				B6EF2FD61F7A1C2900C33387 /* Frameworks */,
+				BB8798FC9972E6D6D451D909 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,8 +179,24 @@
 		B6EF2FD61F7A1C2900C33387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1047FC8A0AD3A6308D7CC9AA /* Pods_ImageLab.framework */,
+				ACE445C6E8B13CF5077C20DE /* Pods_ImageLab_ImageLabUITests.framework */,
+				689DD9CA3E815DFC223D9FA0 /* Pods_ImageLabTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB8798FC9972E6D6D451D909 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9B57B758583FDAA603900063 /* Pods-ImageLab.debug.xcconfig */,
+				2FEA9177E0F86279567C3BA9 /* Pods-ImageLab.release.xcconfig */,
+				0051514D34EE83AB58CBC6E1 /* Pods-ImageLab-ImageLabUITests.debug.xcconfig */,
+				7108B53E2698EC37902CBE70 /* Pods-ImageLab-ImageLabUITests.release.xcconfig */,
+				1A6EC3AF4986C181F8C781DA /* Pods-ImageLabTests.debug.xcconfig */,
+				179601825A36874EA6858B4F /* Pods-ImageLabTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B650B33F1D8340F0000114A1 /* Build configuration list for PBXNativeTarget "ImageLab" */;
 			buildPhases = (
+				1DCC87E49C7A5CBC58391C69 /* [CP] Check Pods Manifest.lock */,
 				B650B3131D8340F0000114A1 /* Sources */,
 				B650B3141D8340F0000114A1 /* Frameworks */,
 				B650B3151D8340F0000114A1 /* Resources */,
+				3E3C4430BF85024066174F2A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +225,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B650B3421D8340F0000114A1 /* Build configuration list for PBXNativeTarget "ImageLabTests" */;
 			buildPhases = (
+				534B6D4487F2438D9BA07D89 /* [CP] Check Pods Manifest.lock */,
 				B650B3271D8340F0000114A1 /* Sources */,
 				B650B3281D8340F0000114A1 /* Frameworks */,
 				B650B3291D8340F0000114A1 /* Resources */,
@@ -209,9 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B650B3451D8340F0000114A1 /* Build configuration list for PBXNativeTarget "ImageLabUITests" */;
 			buildPhases = (
+				1E4C26D8E453DC131789AFD5 /* [CP] Check Pods Manifest.lock */,
 				B650B3321D8340F0000114A1 /* Sources */,
 				B650B3331D8340F0000114A1 /* Frameworks */,
 				B650B3341D8340F0000114A1 /* Resources */,
+				9C059B76BE02BB0967365E20 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,7 +272,7 @@
 				TargetAttributes = {
 					B650B3161D8340F0000114A1 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = D2284P3LJK;
+						DevelopmentTeam = F69WJ27LN4;
 					};
 					B650B32A1D8340F0000114A1 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -295,6 +332,111 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1DCC87E49C7A5CBC58391C69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageLab-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E4C26D8E453DC131789AFD5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageLab-ImageLabUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E3C4430BF85024066174F2A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageLab/Pods-ImageLab-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ImageLab/Pods-ImageLab-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		534B6D4487F2438D9BA07D89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageLabTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C059B76BE02BB0967365E20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageLab-ImageLabUITests/Pods-ImageLab-ImageLabUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ImageLab-ImageLabUITests/Pods-ImageLab-ImageLabUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B650B3131D8340F0000114A1 /* Sources */ = {
@@ -475,10 +617,11 @@
 		};
 		B650B3401D8340F0000114A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B57B758583FDAA603900063 /* Pods-ImageLab.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = D2284P3LJK;
+				DEVELOPMENT_TEAM = F69WJ27LN4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,10 +641,11 @@
 		};
 		B650B3411D8340F0000114A1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FEA9177E0F86279567C3BA9 /* Pods-ImageLab.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = D2284P3LJK;
+				DEVELOPMENT_TEAM = F69WJ27LN4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -520,6 +664,7 @@
 		};
 		B650B3431D8340F0000114A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A6EC3AF4986C181F8C781DA /* Pods-ImageLabTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ImageLabTests/Info.plist;
@@ -532,6 +677,7 @@
 		};
 		B650B3441D8340F0000114A1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 179601825A36874EA6858B4F /* Pods-ImageLabTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ImageLabTests/Info.plist;
@@ -544,6 +690,7 @@
 		};
 		B650B3461D8340F0000114A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0051514D34EE83AB58CBC6E1 /* Pods-ImageLab-ImageLabUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ImageLabUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -555,6 +702,7 @@
 		};
 		B650B3471D8340F0000114A1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7108B53E2698EC37902CBE70 /* Pods-ImageLab-ImageLabUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ImageLabUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

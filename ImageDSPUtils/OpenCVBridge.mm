@@ -21,81 +21,59 @@ using namespace cv;
 @end
 
 @implementation OpenCVBridge
+#define bufferSize 90
 
-float redArr[90];
-float blueArr[90];
-float greenArr[90];
+//heart rate arr
+float redArr[bufferSize];
 int count = 0;
-CFAbsoluteTime startTime;
-CFAbsoluteTime endTime;
-CFAbsoluteTime diff;
-//float finishedTime=0;
-int countForStart=0;
-
-//float firstTouch[2];
-int countForEnd=0;
 
 #pragma mark ===Write Your Code Here===
 // alternatively you can subclass this class and override the process image function
 
 
+- (float*)returnHeartData{
+    return redArr;
+}
+
+- (int)bufferSizeVar{
+    return bufferSize;
+}
 
 - (void)processHeartRate{
     cv::Mat frame_gray,image_copy;
 
-//    bool flag = false;
-    
-    
-    //when we blocked the camera, it seems like the G and R decreased mostly. The green is the most sensitive one. So we can threshold maybe one of it.
+    //we reset the arr when arr is full and we finished plotting data
+    if (self.needReset && _isFull){
+        count=0;
+    }
     
     char text[50];
     Scalar avgPixelIntensity;
-    
     cvtColor(_image, image_copy, CV_BGRA2BGR); // get rid of alpha for processing
     avgPixelIntensity = cv::mean( image_copy );
     
     
-    sprintf(text,"Avg. B: %.0f, G: %.0f, R: %.0f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
-    cv::putText(_image, text, cv::Point(100, 350), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+    sprintf(text,"Avg. R: %.0f, G: %.0f, B: %.0f", avgPixelIntensity.val[0],avgPixelIntensity.val[1],avgPixelIntensity.val[2]);
+    cv::putText(_image, text, cv::Point(100, 25), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
     
     // detect a finger
     if (avgPixelIntensity.val[0]>190){
-        if(countForStart<1){
-            startTime =  CFAbsoluteTimeGetCurrent();
-            countForStart+=1;
-        }
-        
-//        flag=true;
-        if (count<90){
-            blueArr[count]=avgPixelIntensity.val[0];
-            greenArr[count]=avgPixelIntensity.val[1];
-            redArr[count]=avgPixelIntensity.val[2];
+        if (count<bufferSize){
+            //Not full
+            redArr[count]=avgPixelIntensity.val[0];
+            self.isFull=false;
             count+=1;
         }else
         {
-            sprintf(text,"Array is Full!!!");
-            cv::putText(_image, text, cv::Point(100, 100), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
-            
-            
-            if(countForEnd<1){
-                endTime = CFAbsoluteTimeGetCurrent();
-                diff = endTime-startTime;
-                countForEnd+=1;
-            }
-            sprintf(text,"We used %.3f s to fill the arrays", diff);
-            cv::putText(_image, text, cv::Point(50, 50), FONT_HERSHEY_PLAIN, 0.75, Scalar::all(255), 1, 2);
+            self.isFull=true;
         }
-        
         sprintf(text,"Finger detected! Please hold your position!");
-        cv::putText(_image, text, cv::Point(71, 200), FONT_HERSHEY_PLAIN, 0.60, Scalar::all(255), 1, 2);
-        
+        cv::putText(_image, text, cv::Point(71, 75), FONT_HERSHEY_PLAIN, 0.60, Scalar::all(255), 1, 2);
     }
     else{
         sprintf(text,"Please put your finger on the camera");
-        cv::putText(_image, text, cv::Point(71, 300), FONT_HERSHEY_PLAIN, 0.65, Scalar::all(255), 1, 2);
+        cv::putText(_image, text, cv::Point(71, 125), FONT_HERSHEY_PLAIN, 0.65, Scalar::all(255), 1, 2);
     }
-    
-//    return flag;
 }
 
 

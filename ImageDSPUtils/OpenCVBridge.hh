@@ -15,8 +15,9 @@
 @interface OpenCVBridge : NSObject
 
 @property (nonatomic) NSInteger processType;
-
-
+@property (nonatomic) bool isFull; //check if array is true
+@property (nonatomic) int bufferSizeVar;  // need to var to be used in modual B view
+@property (nonatomic) bool needReset;   // check if we need to reset the plot
 // set the image for processing later
 -(void) setImage:(CIImage*)ciFrameImage
       withBounds:(CGRect)rect
@@ -41,5 +42,6 @@
 
 -(void)addText:(NSString *)infoText atY:(int)y;
 
+-(float*)returnHeartData;
 
 @end

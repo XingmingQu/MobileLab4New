@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Charts
+
+
 
 class ModuleBViewController: UIViewController {
     var videoManager:VideoAnalgesic! = nil
     let bridge = OpenCVBridge()
-
+    @IBOutlet weak var heartRateCharts: LineChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +36,7 @@ class ModuleBViewController: UIViewController {
         }
         //self.videoManager.turnOnFlashwithLevel(1.0)
         // Do any additional setup after loading the view.
-        
+        self.heartRateCharts.backgroundColor = UIColor.white
     }
     
     // need to fix turnOnFlashwithLevel bug. It was called once at the first time switched to modual B
@@ -70,6 +74,36 @@ class ModuleBViewController: UIViewController {
         self.bridge.setImage(retImage, withBounds: retImage.extent, andContext: self.videoManager.getCIContext())
         self.bridge.processHeartRate()
         retImage = self.bridge.getImage()
+        if (self.bridge.isFull == false){
+            print("111111111111111")
+        }
+        if (self.bridge.isFull){
+            
+
+            let pointer: UnsafeMutablePointer<Float> = self.bridge.returnHeartData()
+            
+            let heartRateData = Array(UnsafeBufferPointer(start: pointer, count: Int(self.bridge.bufferSizeVar)))
+            
+            var dataEntries: [ChartDataEntry] = []
+            
+            for i in 0..<self.bridge.bufferSizeVar {
+                let dataEntry = ChartDataEntry(x: Double(i), y: Double(heartRateData[Int(i)]))
+                dataEntries.append(dataEntry)
+            }
+            
+            let chartDataSet = LineChartDataSet(entries: dataEntries, label: "PPG")
+            chartDataSet.drawCirclesEnabled = false
+            chartDataSet.setColor(UIColor.red)
+            let chartData = LineChartData(dataSet: chartDataSet)
+
+            DispatchQueue.main.async {
+                self.heartRateCharts.data = chartData
+            }
+            
+            
+            self.bridge.needReset = true
+            
+        }
         
         return retImage
     }
