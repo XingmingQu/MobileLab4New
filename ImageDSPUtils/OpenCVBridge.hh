@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreImage/CoreImage.h>
 #import "AVFoundation/AVFoundation.h"
-
+#import <Accelerate/Accelerate.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "PrefixHeader.pch"
 
 @interface OpenCVBridge : NSObject
@@ -43,5 +44,7 @@
 -(void)addText:(NSString *)infoText atY:(int)y;
 
 -(float*)returnHeartData;
+
+-(int)calculatedHeartRateFrom:(float *)REDArray Withlenth:(int)arrLength withWindowSize:(int)windowSize;
 
 @end

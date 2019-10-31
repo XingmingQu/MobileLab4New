@@ -62,6 +62,7 @@
                     <tabBarItem key="tabBarItem" title="ModuleB" id="ywE-kM-OWe"/>
                     <connections>
                         <outlet property="heartRateCharts" destination="nk4-07-RPL" id="dXL-Lv-4tq"/>
+                        <outlet property="heartRateLabel" destination="y7M-nU-zdv" id="v1n-q0-3mg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7s-1L-GEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

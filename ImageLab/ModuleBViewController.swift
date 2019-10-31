@@ -15,21 +15,16 @@ class ModuleBViewController: UIViewController {
     var videoManager:VideoAnalgesic! = nil
     let bridge = OpenCVBridge()
     @IBOutlet weak var heartRateCharts: LineChartView!
+    @IBOutlet weak var heartRateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = nil
-  
-
         self.videoManager = VideoAnalgesic.sharedInstance
         self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.back)
-        
-        
         self.bridge.setTransforms(self.videoManager.transform)
         self.videoManager.setProcessingBlock(newProcessBlock: self.processImage)
-        
-        
         
         if !videoManager.isRunning{
             videoManager.start()
@@ -41,7 +36,6 @@ class ModuleBViewController: UIViewController {
     
     // need to fix turnOnFlashwithLevel bug. It was called once at the first time switched to modual B
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.videoManager.setCameraPosition(position: AVCaptureDevice.Position.back)
@@ -63,9 +57,7 @@ class ModuleBViewController: UIViewController {
 //        videoManager.stop()
     }
 
-    
     func processImage(inputImage:CIImage) -> CIImage{
-        
 //        self.videoManager.turnOnFlashwithLevel(1.0)
         var retImage = inputImage
         
@@ -74,11 +66,12 @@ class ModuleBViewController: UIViewController {
         self.bridge.setImage(retImage, withBounds: retImage.extent, andContext: self.videoManager.getCIContext())
         self.bridge.processHeartRate()
         retImage = self.bridge.getImage()
-        if (self.bridge.isFull == false){
-            print("111111111111111")
-        }
+        //if the array is full, we start to calculate heart rate and update the chart
         if (self.bridge.isFull){
             
+            let heartRate = self.bridge.calculatedHeartRate(from: self.bridge.returnHeartData(), withlenth: self.bridge.bufferSizeVar, withWindowSize: 10)
+            // the reason why we choose withWindowSize: 10 is that we assume ones heart is under 3 times / second.
+            // so we just count the peak within 1/3 second
 
             let pointer: UnsafeMutablePointer<Float> = self.bridge.returnHeartData()
             
@@ -91,20 +84,17 @@ class ModuleBViewController: UIViewController {
                 dataEntries.append(dataEntry)
             }
             
-            let chartDataSet = LineChartDataSet(entries: dataEntries, label: "PPG")
+            let chartDataSet = LineChartDataSet(entries: dataEntries, label: "PPG signal")
             chartDataSet.drawCirclesEnabled = false
             chartDataSet.setColor(UIColor.red)
             let chartData = LineChartData(dataSet: chartDataSet)
 
             DispatchQueue.main.async {
                 self.heartRateCharts.data = chartData
+                self.heartRateLabel.text=String(heartRate)
             }
-            
-            
             self.bridge.needReset = true
-            
         }
-        
         return retImage
     }
 

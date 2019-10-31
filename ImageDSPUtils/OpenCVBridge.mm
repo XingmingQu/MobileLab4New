@@ -21,7 +21,9 @@ using namespace cv;
 @end
 
 @implementation OpenCVBridge
-#define bufferSize 90
+
+//FPS = 30 so 30 *10 means the window length = 10 second
+#define bufferSize 30*10
 
 //heart rate arr
 float redArr[bufferSize];
@@ -29,6 +31,39 @@ int count = 0;
 
 #pragma mark ===Write Your Code Here===
 // alternatively you can subclass this class and override the process image function
+
+//the code from our FFT lab
+- (int)calculatedHeartRateFrom:(float *)REDArray Withlenth:(int)arrLength withWindowSize:(int)windowSize{
+
+    // using https://developer.apple.com/documentation/accelerate/1450505-vdsp_vswmax?language=objc
+    //vDSP_vswmax
+    //Array must contain N + WindowLength - 1 element
+    // Therefore, numOfWindowPosition = arrLength - windowSize + 1
+
+    int numOfWindowPosition = arrLength - windowSize + 1 ;
+    float test[numOfWindowPosition];
+    float *maxValueOfEachWindow = test;
+    
+    vDSP_vswmax(REDArray, 1, maxValueOfEachWindow, 1, numOfWindowPosition, windowSize);
+    
+    //So we have maxValueOfEachWindow. What we need to do next is to find all the peaks' indexes.
+    // the way to find peak index is to traverse the fftArray
+    // if the fftArray[i] == the maxValueOfEachWindow[i], this i is a peak index
+    NSMutableArray *peaksIndex = [[NSMutableArray alloc] init];
+    int current=-10000;
+    for (int i = 0; i < numOfWindowPosition; i++) {
+        // but we also add peaks at least 50Hz apart so we add a constrain
+        if (i-current>=windowSize && maxValueOfEachWindow[i] == REDArray[i] ) {
+            [peaksIndex addObject:[NSNumber numberWithInteger:i]];
+            current=i;
+        }
+    }
+    
+    //window second = bufferSize/30  Then peaksIndex.count means heart jumped peaksIndex.count times
+    // so we have heart jumped peaksIndex.count times in bufferSize/30 second
+    // finally heart jumped in 60 second is as below
+    return int(peaksIndex.count)*60*30/ (bufferSize);
+}
 
 
 - (float*)returnHeartData{
@@ -94,13 +129,9 @@ int count = 0;
     const int kCannyLowThreshold = 300;
     const int kFilterKernelSize = 5;
     
-    
-    
-    
     switch (self.processType) {
         case 0:
         {
-            
             break;
         }
         case 1:
